@@ -22,7 +22,11 @@ class App extends React.Component {
 
   
 
-  deleteMovie = (movie) => {
+  deleteMovie = async (movie) => {
+    const baseUrl = `http://localhost:3002/movies/${movie.id}`
+    await fetch(baseUrl, {
+      method:"DELETE"
+    })
     const newMovieList = this.state.movies.filter(m => m.id !== movie.id)
     // this.setState({
     //   movies: newMovieList
